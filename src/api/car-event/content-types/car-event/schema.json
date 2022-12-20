@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "car_events",
+  "info": {
+    "singularName": "car-event",
+    "pluralName": "car-events",
+    "displayName": "Car_Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "car_event_start_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "car_event_end_date": {
+      "type": "datetime",
+      "required": true,
+      "unique": false
+    },
+    "car_event_type": {
+      "type": "enumeration",
+      "enum": [
+        "Location",
+        "Essai",
+        "Entretien",
+        "Nettoyage"
+      ],
+      "required": true
+    },
+    "car_event_availability_for_rent": {
+      "type": "boolean"
+    },
+    "car_event_availability_for_sale": {
+      "type": "boolean"
+    },
+    "car_event_add_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "car_event_description": {
+      "type": "text"
+    },
+    "car": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car.car",
+      "inversedBy": "car_events"
+    },
+    "reservation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::reservation.reservation",
+      "inversedBy": "car_events"
+    },
+    "road_test": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::road-test.road-test",
+      "inversedBy": "car_events"
+    }
+  }
+}

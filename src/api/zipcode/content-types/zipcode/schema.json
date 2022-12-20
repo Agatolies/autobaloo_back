@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "zipcodes",
+  "info": {
+    "singularName": "zipcode",
+    "pluralName": "zipcodes",
+    "displayName": "Zipcode",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "zipcode_name": {
+      "type": "string"
+    },
+    "zipcode": {
+      "type": "integer",
+      "required": true,
+      "unique": true
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "zipcode"
+    }
+  }
+}

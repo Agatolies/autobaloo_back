@@ -1,0 +1,93 @@
+{
+  "kind": "collectionType",
+  "collectionName": "models",
+  "info": {
+    "singularName": "model",
+    "pluralName": "models",
+    "displayName": "Model",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "model_name": {
+      "type": "string",
+      "required": true
+    },
+    "model_doors": {
+      "type": "integer",
+      "required": true,
+      "min": 3
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "models"
+    },
+    "model_images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "model_variant": {
+      "type": "string",
+      "required": true
+    },
+    "model_description": {
+      "type": "text",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nunc sapien, aliquet vel nisl eu, tincidunt molestie nunc. Integer ultricies lorem vel dolor mattis, ut viverra est luctus. Fusce tristique urna et tellus rutrum condimentum non sed augue. Ut lectus nisl, egestas faucibus blandit eu, tempus ac ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam venenatis vitae magna quis eleifend. Vestibulum sagittis id turpis id congue. Duis dictum accumsan libero vitae tincidunt.  In pharetra sagittis dignissim. Ut sit amet fermentum ante. Nulla pellentesque, risus at aliquet iaculis, enim justo ullamcorper mauris, non rhoncus enim diam ac leo. Nunc vel elit posuere, viverra risus sit amet, consectetur purus. Morbi auctor tincidunt odio. Fusce nec magna ac massa aliquet posuere. Duis vel neque arcu. Curabitur sit amet justo eu mauris maximus tempus. Nam dolor elit, sagittis sit amet finibus non, consectetur eu nunc."
+    },
+    "model_fuel_type": {
+      "type": "enumeration",
+      "enum": [
+        "Diesel",
+        "Electrique",
+        "Essence"
+      ],
+      "default": "Essence",
+      "required": true
+    },
+    "model_engine_box": {
+      "type": "enumeration",
+      "enum": [
+        "Automatique",
+        "Manuelle",
+        "Sequentielle"
+      ],
+      "default": "Manuelle",
+      "required": true
+    },
+    "model_construction_year": {
+      "type": "integer",
+      "required": true,
+      "default": 2022,
+      "min": 2010
+    },
+    "model_european_code": {
+      "type": "enumeration",
+      "enum": [
+        "Euro 1",
+        "Euro 2",
+        "Euro 3",
+        "Euro 4",
+        "Euro 5",
+        "Euro 6"
+      ],
+      "default": "Euro 6",
+      "required": true
+    },
+    "cars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car.car",
+      "mappedBy": "model"
+    }
+  }
+}

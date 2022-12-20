@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cars",
+  "info": {
+    "singularName": "car",
+    "pluralName": "cars",
+    "displayName": "Car",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "car_chassis_serial_number": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "car_availability": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "car_plate_number": {
+      "type": "string",
+      "required": false
+    },
+    "car_kilometers": {
+      "type": "integer",
+      "required": true
+    },
+    "car_color": {
+      "type": "enumeration",
+      "enum": [
+        "Blanc",
+        "Noir",
+        "Gris",
+        "Rouge",
+        "Bleu",
+        "Brun",
+        "Jaune",
+        "Orange",
+        "Rose",
+        "Vert"
+      ],
+      "required": true
+    },
+    "car_date_added": {
+      "required": true,
+      "type": "datetime"
+    },
+    "car_sale_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "model": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::model.model",
+      "inversedBy": "cars"
+    },
+    "road_tests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::road-test.road-test",
+      "mappedBy": "car"
+    },
+    "car_events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car-event.car-event",
+      "mappedBy": "car"
+    },
+    "reservations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reservation.reservation",
+      "mappedBy": "car"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "cars"
+    },
+    "car_is_featured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "car_reservation_daily_price": {
+      "type": "decimal",
+      "required": true,
+      "default": 50
+    }
+  }
+}

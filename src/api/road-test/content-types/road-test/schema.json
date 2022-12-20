@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "road_tests",
+  "info": {
+    "singularName": "road-test",
+    "pluralName": "road-tests",
+    "displayName": "Road_Test",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "car_events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car-event.car-event",
+      "mappedBy": "road_test"
+    },
+    "car": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car.car",
+      "inversedBy": "road_tests"
+    }
+  }
+}
